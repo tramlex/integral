@@ -24,10 +24,11 @@ public class Integral extends Thread{
 			this.number = A + NumberOfSteps + this.step * i ;
 			double result = Math.sqrt(this.number);
 			//System.out.println("Шаг= " + this.number + " Результат= " + result);
-			this.sum = this.sum + result*this.step ;
+			this.sum = this.sum + result;
 		}
+		this.sum = this.sum * this.step;
 		this.NumberOfSteps = this.NumberOfSteps + A;
-		System.out.println("Сумма= " + this.sum + "Поток номер = " + this.NumberOfSteps);
+		System.out.println("Сумма = " + this.sum + " Начало отрезка = " + this.NumberOfSteps);
 		return;
     }
 	
@@ -45,7 +46,7 @@ public class Integral extends Thread{
 				integral.start();//запуск потока
 				try 
 				{
-					integral.sleep(2000);//жду выполнение потока
+					integral.sleep(1000);//жду выполнение потока
 				} 
 				catch(InterruptedException e){}
 				
