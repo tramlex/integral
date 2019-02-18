@@ -4,6 +4,7 @@ public class Integral extends Thread{
 	public static final double A = -1; //предел интегрированния
 	public static final double B = 1; //предел интегрированния
 	public static final double DELTA = 0.01; // минимальная разница между значениями
+	
 	private boolean nextThread = false ; // Условие выхода из цикла
     private double sum = 0; // Результат суммы в каждом отрезке
     private static double step = (B - A)/NUMBER_OF_THREADS/NUMBER_OF_THREADS; // минимальный шаг
@@ -14,14 +15,17 @@ public class Integral extends Thread{
 		this.numberOfSteps = numberOfSteps;	//передача значения в поток
     }
 	
+	
 	@Override
     public void run() {
+		
 		double turn = NUMBER_OF_THREADS; // Кол-во отрезков , на которые разбивается поток
+		
 		while(this.nextThread == false){
 		this.sum=0;
 		for(int i = 0; i < turn ; i++){	
 			this.number = A + numberOfSteps + this.step * i ;
-			double result = Math.pow(this.number , 2);
+			double result = Math.pow(this.number , 2); //здесь задается интегральная функция 
 			double result2 = Math.pow(this.number + this.step , 2);
 			//System.out.println("Шаг= " + this.number + " Результат= " + result + " Delta= " + Math.abs(result2-result));
 			this.nextThread = true ;
@@ -43,7 +47,6 @@ public class Integral extends Thread{
     }
  
     public static void main(String[] args) {
-		
 		double numberOfSteps = 0 ;
 		double finish = 0;
 		for(int i = 0 ; i < NUMBER_OF_THREADS; i++)
