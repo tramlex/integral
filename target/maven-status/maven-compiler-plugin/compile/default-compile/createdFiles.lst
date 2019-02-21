@@ -1,0 +1,10 @@
+Queen.class
+Bishop.class
+Controller1.class
+Chessboard.class
+AbstractPiece.class
+Rook.class
+Controller.class
+King.class
+Pawn.class
+Knight.class
